@@ -131,7 +131,10 @@ properties:
           - enum:
               - msft,lukla
               - msft,chakra
+              - msft,vela
+              - nokia,rock
           - const: qcom,msm8212
+          - const: qcom,msm8210
 
       - items:
           - enum:
