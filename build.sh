@@ -6,7 +6,7 @@ TOOLCHAIN_PATH=""
 TOOLCHAIN_PREFIX="arm-linux-gnueabihf-"
 
 ARCH="arm"
-CONFIG="msm8212_defconfig"
+CONFIG="lumia_defconfig"
 OUT="./out"
 
 if [ "${TOOLCHAIN_PATH}" != "" ]; then
