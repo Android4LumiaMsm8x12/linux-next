@@ -1,0 +1,31 @@
+name: Kernel CI
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+
+    steps:
+    - name: Checkout Kernel Source
+      uses: actions/checkout@v4
+
+    - name: Getting Toolchain
+      run: |
+        sudo apt update
+        sudo apt install lib32z1 ccache autoconf flex bison git build-essential make gcc-arm-linux-gnueabihf ncurses-dev
+    - name: Building Kernel
+      run: ./build.sh
+    - name: Moving Output
+      run: |
+        mkdir -p /home/runner/work/output
+        cp arch/arm/boot/zImage /home/runner/work/output/zImage
+    - name: Uploading Output
+      uses: actions/upload-artifact@v4
+      with:
+        name: zImage
+        path: /home/runner/work/output/zImage
