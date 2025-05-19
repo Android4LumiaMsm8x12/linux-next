@@ -20,9 +20,9 @@ jobs:
     - name: Moving Output
       run: |
         mkdir -p /home/runner/work/output
-        cp ./arch/arm/boot/zImage /home/runner/work/output/zImage
-        cp ./arch/arm/boot/dts/qcom-msm8210-msft-lumia-vela.dtb /home/runner/work/output/qcom-msm8210-msft-lumia-vela.dtb
-        cp ./arch/arm/boot/dts/qcom-msm8212-nokia-lumia-rock.dtb /home/runner/work/output/qcom-msm8212-nokia-lumia-rock.dtb
+        cp ./out/arch/arm/boot/zImage /home/runner/work/output/zImage
+        cp ./out/arch/arm/boot/dts/qcom-msm8210-msft-lumia-vela.dtb /home/runner/work/output/qcom-msm8210-msft-lumia-vela.dtb
+        cp ./out/arch/arm/boot/dts/qcom-msm8212-nokia-lumia-rock.dtb /home/runner/work/output/qcom-msm8212-nokia-lumia-rock.dtb
     - name: Uploading Output
       uses: actions/upload-artifact@v4
       with:
