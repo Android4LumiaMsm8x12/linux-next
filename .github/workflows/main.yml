@@ -1,0 +1,40 @@
+name: Kernel CI
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+
+    steps:
+    - name: Checkout Kernel Source
+      uses: actions/checkout@v4
+
+    - name: Getting Toolchain
+      run: |
+        sudo apt update
+        sudo apt install lib32z1 ccache autoconf flex bison git build-essential make gcc-arm-linux-gnueabihf ncurses-dev
+    - name: Building Kernel
+      run: ./build.sh
+    - name: Moving Output
+      run: |
+        mkdir -p /home/runner/work/output
+        cp ./out/arch/arm/boot/zImage /home/runner/work/output/zImage
+        cp ./out/arch/arm/boot/dts/qcom-msm8210-msft-lumia-vela.dtb /home/runner/work/output/qcom-msm8210-msft-lumia-vela.dtb
+        cp ./out/arch/arm/boot/dts/qcom-msm8212-nokia-lumia-rock.dtb /home/runner/work/output/qcom-msm8212-nokia-lumia-rock.dtb
+    - name: Uploading Output
+      uses: actions/upload-artifact@v4
+      with:
+        name: zImage
+        path: /home/runner/work/output/zImage
+    - name: Uploading Output
+      uses: actions/upload-artifact@v4
+      with:
+        name: Lumia 435
+        path: /home/runner/work/output/qcom-msm8210-msft-lumia-vela.dtb
+    - name: Uploading Output
+      uses: actions/upload-artifact@v4
+      with:
+        name: Lumia 530
+        path: /home/runner/work/output/qcom-msm8212-nokia-lumia-rock.dtb

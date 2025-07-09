@@ -975,6 +975,7 @@ dtb-$(CONFIG_ARCH_QCOM) += \
 	qcom-ipq8064-rb3011.dtb \
 	qcom-msm8210-msft-lumia-vela.dtb \
 	qcom-msm8212-msft-lumia-chakra.dtb \
+	qcom-msm8212-nokia-lumia-rock.dtb \
 	qcom-msm8212-msft-lumia-lukla.dtb \
 	qcom-msm8226-samsung-s3ve3g.dtb \
 	qcom-msm8660-surf.dtb \
